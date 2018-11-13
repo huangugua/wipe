@@ -44,6 +44,7 @@ function drawLine(context,x1,y1,x2,y2){
 	context.restore();
 }
 
+// 合并
 function drawT(context,x1,y1,x2,y2){
 	if (arguments.length === 3) {
 		// 调用的是画点功能
