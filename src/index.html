@@ -2,51 +2,46 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<title>wipe 组件</title>
-	<style type="text/css">
+	<style>
 		html,body{
 			width: 100%;
 			height: 100%;
-			margin: 0;
+			margin:0;
 			padding: 0;
 		}
 		#cas{
-			border: 1px solid #000;
-			background: url(image/wipe1.jpg) center 0 no-repeat;
-			background-size: 100%;
+			/*border: 1px solid #000;*/
+			/*background: url(images/wipe1.jpg) center 0 no-repeat;*/
+			display: black;
+			margin: 0 auto;
 		}
 	</style>
 </head>
 <body>
-	<div class="parent">
-	<canvas id="cas" width="375px" height="667px"></canvas>
-	</div>
-<!-- <<<<<<< HEAD -->
-	<!-- <span>在主分支上的修改</span> -->
-<!-- ======= -->
-	<!-- <div>在yjx分支上的修改</div> -->
-<!-- >>>>>>> yjx -->
+	<canvas class="cas" id="cas"></canvas>
 </body>
 </html>
 <script type="text/javascript" src="js/wipe.js"></script>
-<script type="text/javascript">
-	var wipeConfig = {
-		id:"cas",
-		coverType:"color",	// 取值类型color、image
-		color:"",
-		imgUrl:"image/wipe2.jpg",	// 前面的覆盖图
-		backImgUrl:"image/wipe1.jpg",	// 背景图片
-		width:"375",	// canvas宽
-		height:"667",	// canvas高
-		radius:"20",	// 涂抹笔半径
-		percent:50,	// 透明面积占总体面积
-		callback:wipedCallback,	// 用户自定义回调函数名称
+<script>
+	var  cas02 = new Wipe({
+		id:"cas",		//获取id
+		coverType:"color", //,取值color image
+		color:"#666",		// 颜色
+		imgUrl:"image/wipe2.jpg", 			//前面覆盖图
+		backImgUrl:"image/wipe1.jpg", 		//背景图
+		width: "375",      		// canvas宽
+		height:"665",			//canvas高
+		raduis: 15,			//涂抹的半径
+		opcity: 1, //设置透明度
+		callback:wipeCallback, //涂抹完成后的事件
+		transpercent:50 //涂抹多少部分全部清除
+	})
+	function wipeCallback(percents){
+	if (percents>50) {
+	console.log("透明面积超过50%，查看底图");
 	}
-	var cas01 = new Wipe(wipeConfig);
-	function wipedCallback(percent){
-		if (percent > 50) {
-			console.log('透明面积超过50%，查看底图');
-		}
 	}
+
 </script>
